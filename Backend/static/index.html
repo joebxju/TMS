@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Samaritan</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container" id="app">
+        <!-- Login Page -->
+        <div id="login-page" class="page active">
+            <div class="login-container">
+                <div class="login-header">
+                    <h1>Good Samaritan</h1>
+                    <p>Healing Hearts</p>
+                </div>
+                <div class="login-form">
+                    <div class="alert-container" id="alert-container"></div>
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password"><i class="fas fa-lock"></i> Password</label>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                    </div>
+                    <button id="login-btn" class="btn-primary">Login <i class="fas fa-sign-in-alt"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Dashboard -->
+        <div id="user-dashboard" class="page">
+            <div class="dashboard-container">
+                <div class="sidebar">
+                    <div class="sidebar-header">
+                        <h2>Good Samaritan</h2>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="user-details">
+                            <h3 id="user-name">User</h3>
+                            <p id="user-email">user@example.com</p>
+                        </div>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li class="active"><a href="#" id="dashboard-tab"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <li><a href="#" id="login-details-tab"><i class="fas fa-history"></i> Login Details</a></li>
+                        <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                        <li id="logout-btn"><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+                </div>
+                <div class="main-content">
+                    <div class="dashboard-header">
+                        <h2>User Dashboard</h2>
+                        <div class="date-time" id="date-time"></div>
+                    </div>
+                    <div class="dashboard-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-sign-in-alt"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Login Attempts</h3>
+                                <p id="login-attempts-count">5</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Security Status</h3>
+                                <p id="security-status">Secure</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-history"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Last Login</h3>
+                                <p id="last-login">Just now</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="data-section" id="dashboard-section">
+                        <div class="section-header">
+                            <h3>Security Information</h3>
+                            <div class="refresh-btn" id="refresh-security">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </div>
+                        </div>
+                        <div class="security-info-container">
+                            <div class="security-card">
+                                <div class="security-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="security-details">
+                                    <h4>Account Security</h4>
+                                    <p class="security-status">Your account is secure</p>
+                                    <p class="security-description">Your password was last changed 30 days ago.</p>
+                                </div>
+                            </div>
+                            <div class="security-card">
+                                <div class="security-icon">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <div class="security-details">
+                                    <h4>Login Protection</h4>
+                                    <p class="security-status">Basic protection enabled</p>
+                                    <p class="security-description">Enable two-factor authentication for enhanced security.</p>
+                                </div>
+                            </div>
+                            <div class="security-card">
+                                <div class="security-icon">
+                                    <i class="fas fa-user-shield"></i>
+                                </div>
+                                <div class="security-details">
+                                    <h4>Privacy Settings</h4>
+                                    <p class="security-status">Standard protection</p>
+                                    <p class="security-description">Review your privacy settings regularly for optimal security.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="data-section hidden" id="login-details-section">
+                        <div class="section-header">
+                            <h3>Login History</h3>
+                            <div class="refresh-btn" id="refresh-user-data">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </div>
+                        </div>
+                        <div class="data-table-container">
+                            <table class="data-table" id="user-login-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date & Time</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Data will be populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div id="admin-dashboard" class="page">
+            <div class="dashboard-container">
+                <div class="sidebar">
+                    <div class="sidebar-header">
+                        <h2>Security Monitoring System</h2>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-avatar admin">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <div class="user-details">
+                            <h3 id="admin-name">Admin</h3>
+                            <p id="admin-email">admin@example.com</p>
+                        </div>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <li><a href="#" id="login-attempts-tab"><i class="fas fa-sign-in-alt"></i> Login Attempts</a></li>
+                        <li><a href="#" id="blocked-users-tab"><i class="fas fa-ban"></i> Blocked Users</a></li>
+                        <li><a href="#" id="security-logs-tab"><i class="fas fa-shield-alt"></i> Security Logs</a></li>
+                        <li><a href="#" id="api-calls-tab"><i class="fas fa-exchange-alt"></i> API Calls</a></li>
+                        <li id="admin-logout-btn"><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+                </div>
+                <div class="main-content">
+                    <div class="dashboard-header">
+                        <h2>Admin Dashboard</h2>
+                        <div class="date-time" id="admin-date-time"></div>
+                    </div>
+                    <div class="dashboard-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-sign-in-alt"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Login Attempts</h3>
+                                <p id="admin-login-attempts-count">48</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-ban"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Blocked Users</h3>
+                                <p id="blocked-users-count">5</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Security Alerts</h3>
+                                <p id="security-alerts-count">12</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Total Users</h3>
+                                <p id="total-users-count">32</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    
+                    <!-- Login Attempts Section -->
+                    <div class="data-section hidden" id="login-attempts-section">
+                        <div class="section-header">
+                            <h3>Login Attempts</h3>
+                            <div class="refresh-btn" id="refresh-login-attempts">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </div>
+                        </div>
+                        <div class="data-table-container">
+                            <table class="data-table" id="login-attempts-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date & Time</th>
+                                        <th>Email</th>
+                                        <th>IP Address</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Data will be populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Blocked Users Section -->
+                    <div class="data-section hidden" id="blocked-users-section">
+                        <div class="section-header">
+                            <h3>Blocked Users</h3>
+                            <div class="refresh-btn" id="refresh-blocked-users">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </div>
+                        </div>
+                        <div class="data-table-container">
+                            <table class="data-table" id="blocked-users-table">
+                                <thead>
+                                    <tr>
+                                        <th>Email</th>
+                                        <th>IP Address</th>
+                                        <th>Blocked At</th>
+                                        <th>Unblock At</th>
+                                        <th>Reason</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Data will be populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Security Logs Section -->
+                    <div class="data-section hidden" id="security-logs-section">
+                        <div class="section-header">
+                            <h3>Security Logs</h3>
+                            <div class="refresh-btn" id="refresh-security-logs">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </div>
+                        </div>
+                        <div class="data-table-container">
+                            <table class="data-table" id="security-logs-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date & Time</th>
+                                        <th>IP Address</th>
+                                        <th>Attack Type</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Data will be populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- API Calls Section -->
+                    <div class="data-section hidden" id="api-calls-section">
+                        <div class="section-header">
+                            <h3>API Calls</h3>
+                            <div class="refresh-btn" id="refresh-api-calls">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </div>
+                        </div>
+                        <div class="data-table-container">
+                            <table class="data-table" id="api-calls-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date & Time</th>
+                                        <th>IP Address</th>
+                                        <th>Endpoint</th>
+                                        <th>Method</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Data will be populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
